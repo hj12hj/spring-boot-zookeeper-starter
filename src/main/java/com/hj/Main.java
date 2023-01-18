@@ -1,9 +1,12 @@
-package org.example;
+package com.hj;
 
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
+import org.apache.curator.framework.recipes.locks.InterProcessMutex;
 import org.apache.curator.retry.ExponentialBackoffRetry;
 import org.apache.zookeeper.data.Stat;
+
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author: hj
@@ -22,11 +25,17 @@ public class Main {
         zkClient.start();
 
 
+//        zkClient.delete().deletingChildrenIfNeeded().forPath("/test");
+//
+//        zkClient.create().forPath("/test", "123".getBytes());
 
 
-        Stat stat = new Stat();
-        zkClient.getData().storingStatIn(stat).forPath("/zk-test0000000000");
-        System.out.println(stat.getVersion());
+        InterProcessMutex lock = new InterProcessMutex(zkClient, "/test");
+
+        lock.acquire(1000, TimeUnit.SECONDS);
+
+
+        lock.release();
 
 
     }

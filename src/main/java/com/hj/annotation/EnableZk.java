@@ -1,7 +1,9 @@
 package com.hj.annotation;
 
 
+import com.hj.config.ZkConfig;
 import com.hj.enums.ListenerModel;
+import org.springframework.context.annotation.Import;
 
 import java.lang.annotation.*;
 
@@ -10,14 +12,11 @@ import java.lang.annotation.*;
  *
  * @author hejie
  */
-@Target(ElementType.METHOD)
+@Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface ZkListener {
+@Import(ZkConfig.class)
+public @interface EnableZk {
 
-    String path();
-
-
-    ListenerModel type() default ListenerModel.NODE;
 
 }

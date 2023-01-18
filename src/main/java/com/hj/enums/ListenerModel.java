@@ -1,8 +1,12 @@
 package com.hj.enums;
 
-public enum  MQModel {
-    //精准的匹配
-    PRECISE,
-    //模糊的匹配
-    PATTERN
+/**
+ * 监听器的模式
+ *
+ * @author hejie
+ */
+public enum ListenerModel {
+    NODE,
+    TREE,
+    PATH
 }
