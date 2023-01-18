@@ -2,7 +2,6 @@ package com.hj.annotation;
 
 
 import com.hj.config.ZkConfig;
-import com.hj.enums.ListenerModel;
 import org.springframework.context.annotation.Import;
 
 import java.lang.annotation.*;

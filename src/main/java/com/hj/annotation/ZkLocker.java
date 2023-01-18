@@ -1,8 +1,6 @@
 package com.hj.annotation;
 
 
-import com.hj.enums.ListenerModel;
-
 import java.lang.annotation.*;
 
 /**
@@ -15,5 +13,8 @@ import java.lang.annotation.*;
 @Documented
 public @interface ZkLocker {
 
+    String path();
+
+    String value() default "";
 
 }
